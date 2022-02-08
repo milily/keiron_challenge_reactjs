@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState} from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import Chip from '@mui/material/Chip';
 import { CardActionArea } from '@mui/material';
 import axios from "axios";
 
@@ -15,9 +14,9 @@ const PokeCard = ({pokename}) => {
         const singlePokeInfo = () => {
             axios.get(`https://pokeapi.co/api/v2/pokemon/${pokename}`)
                 .then((response) => {
-                    const apiresponse = response;
+                    const apiresponse = response.data;
                     setPokeInfo(apiresponse);
-                    console.log("pokecard",response)
+                    console.log("pokecard",apiresponse)
                 }
             )
         }
