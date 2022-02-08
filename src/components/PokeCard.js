@@ -3,6 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import PokeSprite from "./PokeSprite";
 import axios from "axios";
 
 const PokeCard = ({pokename}) => {
@@ -28,6 +29,7 @@ const PokeCard = ({pokename}) => {
         <Fragment>
             <Card sx={{backgroundColor: '#edf5f9', borderRadius: '14px', border: '3px solid #ffdd56' }}>
                 <CardActionArea>
+                    <PokeSprite urlSprite={pokeInfo.sprites}/>
                     <CardContent>
                         <Typography 
                             gutterBottom 
