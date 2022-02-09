@@ -2,7 +2,6 @@ body{
   background: radial-gradient(#2E86C1, transparent);
 }
 #container{
-  display: flex;
   height: 100vh;
 }
 .pokeball{

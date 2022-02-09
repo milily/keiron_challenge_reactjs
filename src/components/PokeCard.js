@@ -24,23 +24,28 @@ const PokeCard = ({pokename}) => {
     const handleClose = () => { setOpen(false) };
 
     useEffect(()=>{
+        let isMounted = true
 
-        const singlePokeInfo = () => 
-            axios.get(`https://pokeapi.co/api/v2/pokemon/${pokename}`)
+            const singlePokeInfo = () => 
+                axios.get(`https://pokeapi.co/api/v2/pokemon/${pokename}`)
 
-        const evolutionData = () => 
-            axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokename}`)
+            const evolutionData = () => 
+                axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokename}`)
 
-        Promise.all([singlePokeInfo(),evolutionData()])
+            Promise.all([singlePokeInfo(),evolutionData()])
                 .then(([singlePoke, evolutionPoke])=>{
-                    const pokeDataResponse = singlePoke.data;
-                    const pokeEvolutionResponse = evolutionPoke.data;
-                    console.log(pokeDataResponse)
-                    
-                    setPokeInfo(pokeDataResponse);
-                    setPokeEvolution(pokeEvolutionResponse)
-                    setIsLoading(false)
-                })
+                    if(isMounted){
+                        const pokeDataResponse = singlePoke.data;
+                        const pokeEvolutionResponse = evolutionPoke.data;
+                        
+                        setPokeInfo(pokeDataResponse);
+                        setPokeEvolution(pokeEvolutionResponse)
+                        setIsLoading(false)
+                    }
+                } 
+            )
+
+        return () => {isMounted = false}
         
     },[pokename])
 

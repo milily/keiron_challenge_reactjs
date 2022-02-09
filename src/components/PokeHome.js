@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import PokeCard from "./PokeCard";
 import PokeSearch from './PokeSearch'
+import Navbar from './NavBar'
 import Grid from '@mui/material/Grid';
 
 const PokeHome = () => {
@@ -20,8 +21,6 @@ const PokeHome = () => {
         }
         pokeApi()
     },[])
-
-    
 
     const filterByPokemonName = (inputData) =>{ 
         const {
@@ -42,16 +41,14 @@ const PokeHome = () => {
     return(
         <Fragment>
             <Grid container sx={{ justifyContent: 'center' }}>
-                <Grid item sx={{marginTop: 5}}>
-                    <PokeSearch onChangeEvent={filterByPokemonName} /** method prop for Search component*/ />
-                </Grid>
-                
+                <Navbar />
+                <PokeSearch onChangeEvent={filterByPokemonName} /** method prop for Search component*/ />
                 <Grid item xs={10}>
                     <Grid container spacing={2}>
                         {
                             pokecard.map((card, index) =>{
                                 return(
-                                    <Grid style={{marginTop: 40}} item key={index} lg={2} xs={12} md={4} sm={6}>
+                                    <Grid style={{marginTop: 40}} item key={index} lg={3} xs={12} md={4} sm={6}>
                                         <PokeCard
                                             container
                                             key={index} 
