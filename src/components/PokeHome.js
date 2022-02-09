@@ -1,9 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
-import axios from "axios";
+//MUI Components
+import Grid from '@mui/material/Grid';
+//Components
 import PokeCard from "./PokeCard";
 import PokeSearch from './PokeSearch'
 import Navbar from './NavBar'
-import Grid from '@mui/material/Grid';
+//Axios
+import axios from "axios";
 
 const PokeHome = () => {
     const [pokeData, setPokeData] = useState([])

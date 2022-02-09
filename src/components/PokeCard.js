@@ -1,20 +1,28 @@
 import React, { Fragment, useEffect, useState} from "react";
+//MUI Components
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import { CardActionArea } from '@mui/material';
+//Components
 import PokeSprite from "./PokeSprite";
 import PokeModal from './PokeModal'
 import pokeball from './../assets/pokeball.png'
+//Axios
 import axios from "axios";
+//Styles
 import '../App.css'
 
 const PokeCard = ({pokename}) => {
 
     const [pokeInfo, setPokeInfo] = useState([])
     const [pokeEvolution, setPokeEvolution] = useState([])
+
+    //Pokemon image loading state
     const [isLoading, setIsLoading] = useState(true)
+
+    //Modal
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
         if(!open){
@@ -49,6 +57,7 @@ const PokeCard = ({pokename}) => {
         
     },[pokename])
 
+    //Pokemon image component
     if(isLoading){
         return(
             <img

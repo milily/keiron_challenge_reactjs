@@ -1,4 +1,5 @@
 import React from "react";
+//MUI Components
 import CardMedia from '@mui/material/CardMedia';
 
 const PokeSprite = ({urlSprite}) =>{

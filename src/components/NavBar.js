@@ -1,4 +1,5 @@
 import * as React from 'react';
+//MUI Components
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,6 +10,7 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+//Images
 import pokemonLogo from '../assets/pokemonLogo.png'
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
