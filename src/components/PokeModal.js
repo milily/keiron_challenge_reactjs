@@ -48,7 +48,7 @@ const PokeModal = ({open, close, abilities, urlSprite, weight, height}) => {
                                     gutterBottom 
                                     sx={{ fontSize: 15, fontFamily: 'Monospace', textTransform: 'capitalize', marginBottom: 5 }} 
                                     color="text.secondary" >
-                                    {weight} Kg
+                                    {weight/10} Kg
                                 </Typography>
                                 <Typography 
                                     sx={{fontFamily: 'Monospace' }} 
@@ -58,7 +58,7 @@ const PokeModal = ({open, close, abilities, urlSprite, weight, height}) => {
                                 <Typography 
                                     sx={{ fontSize: 15, fontFamily: 'Monospace', textTransform: 'capitalize' }} 
                                     color="text.secondary">
-                                    {height} mt
+                                    {height/10} mt
                                 </Typography>
                             </div>
                         </div>
