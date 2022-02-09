@@ -9,18 +9,19 @@ const PokeHome = () => {
     const [pokecard, setPokecard] = useState([])
     
     useEffect(()=>{
-        pokeapi()
+        const pokeApi = () => {
+            axios.get('https://pokeapi.co/api/v2/pokemon?limit=25')
+                .then(response => {
+                    const apiresponse = response.data
+                    setPokeData(apiresponse.results)
+                    setPokecard(apiresponse.results)
+                }   
+            )
+        }
+        pokeApi()
     },[])
 
-    const pokeapi = () => {
-        axios.get('https://pokeapi.co/api/v2/pokemon?limit=25')
-            .then(response => {
-                const apiresponse = response.data
-                setPokeData(apiresponse.results)
-                setPokecard(apiresponse.results)
-            }   
-        )
-    }
+    
 
     const filterByPokemonName = (inputData) =>{ 
         const {

@@ -9,7 +9,6 @@ import PokeModal from './PokeModal'
 import pokeball from './../assets/pokeball.png'
 import axios from "axios";
 import '../App.css'
-import { PhotoCameraBackTwoTone } from "@mui/icons-material";
 
 const PokeCard = ({pokename}) => {
 
@@ -43,7 +42,7 @@ const PokeCard = ({pokename}) => {
                     setIsLoading(false)
                 })
         
-    },[])
+    },[pokename])
 
     if(isLoading){
         return(
