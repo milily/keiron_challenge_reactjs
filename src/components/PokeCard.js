@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import { CardActionArea } from '@mui/material';
 import PokeSprite from "./PokeSprite";
+import PokeModal from './PokeModal'
 import pokeball from './../assets/pokeball.png'
 import axios from "axios";
 import '../App.css'
@@ -12,20 +13,35 @@ import '../App.css'
 const PokeCard = ({pokename}) => {
 
     const [pokeInfo, setPokeInfo] = useState([])
+    const [pokeEvolution, setPokeEvolution] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => {
+        if(!open){
+            setOpen(true)
+        }
+    };
+    const handleClose = () => { setOpen(false) };
 
     useEffect(()=>{
-        const singlePokeInfo = () => {
+
+        const singlePokeInfo = () => 
             axios.get(`https://pokeapi.co/api/v2/pokemon/${pokename}`)
-                .then((response) => {
-                    const apiresponse = response.data;
+
+        const evolutionData = () => 
+            axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokename}`)
+
+        Promise.all([singlePokeInfo(),evolutionData()])
+                .then(([singlePoke, evolutionPoke])=>{
+                    const apiresponse = singlePoke.data;
+                    const apiresponse2 = evolutionPoke.data;
+                    console.log(apiresponse2)
+                    
                     setPokeInfo(apiresponse);
+                    setPokeEvolution(apiresponse2)
                     setIsLoading(false)
-                    console.log("pokecard",apiresponse)
-                }
-            )
-        }
-        singlePokeInfo()
+                })
+        
     },[])
 
     if(isLoading){
@@ -39,11 +55,18 @@ const PokeCard = ({pokename}) => {
         )
     }
 
+    const evolvesFromSpecies = pokeEvolution?.evolves_from_species?.name || '---'
+    
     return(
         <Fragment>
             <Card sx={{backgroundColor: '#edf5f9', borderRadius: '14px', border: '3px solid #ffdd56' }}>
-                <CardActionArea>
+                <CardActionArea onClick={handleOpen}>
                     <PokeSprite urlSprite={pokeInfo.sprites}/>
+                    <PokeModal 
+                        open={open} 
+                        close={handleClose}
+                        abilities={pokeInfo.abilities}
+                        urlSprite={pokeInfo.sprites}/>
                     <CardContent>
                         <Typography 
                             gutterBottom 
@@ -59,6 +82,21 @@ const PokeCard = ({pokename}) => {
                             variant="h5" 
                             component="div">
                             {pokename}
+                        </Typography>
+                        <Typography 
+                            gutterBottom 
+                            sx={{ fontSize: 12, fontFamily: 'Monospace' }} 
+                            color="text.secondary" 
+                            variant="h5" 
+                            component="div">
+                            Evolución anterior: 
+                        </Typography>
+                        <Typography 
+                            gutterBottom 
+                            sx={{ fontSize: 14, fontFamily: 'Monospace', textTransform: 'capitalize', marginBottom: 2 }} 
+                            color="text.secondary" 
+                            component="div">
+                            {evolvesFromSpecies}
                         </Typography>
                         <Typography 
                             component={'span'} 
