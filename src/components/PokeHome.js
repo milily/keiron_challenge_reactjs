@@ -15,9 +15,8 @@ const PokeHome = () => {
             .then(response => {
                 const apiresponse = response.data
                 setPokecard(apiresponse.results)
-                console.log(apiresponse.results)
-            })
-        
+            }   
+        )
     }
 
    

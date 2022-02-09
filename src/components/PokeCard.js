@@ -9,6 +9,7 @@ import PokeModal from './PokeModal'
 import pokeball from './../assets/pokeball.png'
 import axios from "axios";
 import '../App.css'
+import { PhotoCameraBackTwoTone } from "@mui/icons-material";
 
 const PokeCard = ({pokename}) => {
 
@@ -33,12 +34,12 @@ const PokeCard = ({pokename}) => {
 
         Promise.all([singlePokeInfo(),evolutionData()])
                 .then(([singlePoke, evolutionPoke])=>{
-                    const apiresponse = singlePoke.data;
-                    const apiresponse2 = evolutionPoke.data;
-                    console.log(apiresponse2)
+                    const pokeDataResponse = singlePoke.data;
+                    const pokeEvolutionResponse = evolutionPoke.data;
+                    console.log(pokeDataResponse)
                     
-                    setPokeInfo(apiresponse);
-                    setPokeEvolution(apiresponse2)
+                    setPokeInfo(pokeDataResponse);
+                    setPokeEvolution(pokeEvolutionResponse)
                     setIsLoading(false)
                 })
         
@@ -66,7 +67,9 @@ const PokeCard = ({pokename}) => {
                         open={open} 
                         close={handleClose}
                         abilities={pokeInfo.abilities}
-                        urlSprite={pokeInfo.sprites}/>
+                        urlSprite={pokeInfo.sprites}
+                        weight={pokeInfo.weight}
+                        height={pokeInfo.height}/>
                     <CardContent>
                         <Typography 
                             gutterBottom 
@@ -85,7 +88,7 @@ const PokeCard = ({pokename}) => {
                         </Typography>
                         <Typography 
                             gutterBottom 
-                            sx={{ fontSize: 12, fontFamily: 'Monospace' }} 
+                            sx={{ fontSize: 11, fontFamily: 'Monospace' }} 
                             color="text.secondary" 
                             variant="h5" 
                             component="div">

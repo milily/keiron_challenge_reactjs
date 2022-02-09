@@ -17,7 +17,7 @@ const style = {
     p: 4,
 };
 
-const PokeModal = ({open, close, abilities, urlSprite}) => {
+const PokeModal = ({open, close, abilities, urlSprite, weight, height}) => {
 
     return (
         <div>
@@ -38,11 +38,33 @@ const PokeModal = ({open, close, abilities, urlSprite}) => {
                                 width={'200'}
                                 src={urlSprite.front_default}
                                 alt={'pokemon'}/>
+                            <div>
+                                <Typography 
+                                    sx={{fontFamily: 'Monospace' }} 
+                                    variant="h6">
+                                    Peso: 
+                                </Typography>
+                                <Typography 
+                                    gutterBottom 
+                                    sx={{ fontSize: 15, fontFamily: 'Monospace', textTransform: 'capitalize', marginBottom: 5 }} 
+                                    color="text.secondary" >
+                                    {weight} Kg
+                                </Typography>
+                                <Typography 
+                                    sx={{fontFamily: 'Monospace' }} 
+                                    variant="h6">
+                                    Altura: 
+                                </Typography>
+                                <Typography 
+                                    sx={{ fontSize: 15, fontFamily: 'Monospace', textTransform: 'capitalize' }} 
+                                    color="text.secondary">
+                                    {height} mt
+                                </Typography>
+                            </div>
                         </div>
                         <Typography 
                             id="modal-modal-title" 
                             variant="h6" 
-                            component="h2"
                             fontFamily="Monospace" >
                                 Habilidades:
                         </Typography>
