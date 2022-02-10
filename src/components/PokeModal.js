@@ -31,7 +31,7 @@ const PokeModal = ({open, close, abilities, urlSprite, weight, height}) => {
             >
                 <Fade in={open}>
                     <Box sx={style}>
-                        <div style={{display: 'flex', justifyContent: 'center'}}>
+                        <div style={{display: 'flex', justifyContent: 'space-around'}}>
                             <img
                                 width={'200'}
                                 src={urlSprite.back_default}
@@ -42,33 +42,33 @@ const PokeModal = ({open, close, abilities, urlSprite, weight, height}) => {
                                 alt={'pokemon'}/>
                             
                         </div>
-                        <Grid container sx={{ justifyContent: 'center' }}>
+                        <Grid container sx={{ justifyContent: 'space-around' }}>
                             <Grid item >
                                 <Typography 
-                                    sx={{fontFamily: 'Monospace' }} 
+                                    sx={{fontFamily: 'Monospace'}} 
                                     variant="h6">
                                     Peso: 
                                 </Typography>
                                 <Typography 
                                     gutterBottom 
-                                    sx={{ fontSize: 15, fontFamily: 'Monospace', textTransform: 'capitalize', marginRight: 5 }} 
+                                    sx={{ fontSize: 15, fontFamily: 'Monospace', textTransform: 'capitalize' }} 
                                     color="text.secondary" >
                                     {weight/10} Kg
                                 </Typography>
                             </Grid>
-                            <Grid item>
+                            <Grid item >
                                 <Typography 
-                                    sx={{fontFamily: 'Monospace' }} 
+                                    sx={{fontFamily: 'Monospace'}} 
                                     variant="h6">
                                     Altura: 
                                 </Typography>
                                 <Typography 
-                                    sx={{ fontSize: 15, fontFamily: 'Monospace', textTransform: 'capitalize', marginRight: 10 }} 
+                                    sx={{ fontSize: 15, fontFamily: 'Monospace', textTransform: 'capitalize' }} 
                                     color="text.secondary">
                                     {height/10} mt
                                 </Typography>
                             </Grid>
-                            <Grid item>
+                            <Grid item >
                                 <Typography 
                                 id="modal-modal-title" 
                                 variant="h6" 
