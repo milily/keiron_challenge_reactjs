@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Chip from '@mui/material/Chip';
 import Fade from '@mui/material/Fade';
+import Grid from '@mui/material/Grid';
 
 const style = {
     position: 'absolute',
@@ -39,7 +40,10 @@ const PokeModal = ({open, close, abilities, urlSprite, weight, height}) => {
                                 width={'200'}
                                 src={urlSprite.front_default}
                                 alt={'pokemon'}/>
-                            <div>
+                            
+                        </div>
+                        <Grid container sx={{ justifyContent: 'center' }}>
+                            <Grid item >
                                 <Typography 
                                     sx={{fontFamily: 'Monospace' }} 
                                     variant="h6">
@@ -47,46 +51,54 @@ const PokeModal = ({open, close, abilities, urlSprite, weight, height}) => {
                                 </Typography>
                                 <Typography 
                                     gutterBottom 
-                                    sx={{ fontSize: 15, fontFamily: 'Monospace', textTransform: 'capitalize', marginBottom: 5 }} 
+                                    sx={{ fontSize: 15, fontFamily: 'Monospace', textTransform: 'capitalize', marginRight: 5 }} 
                                     color="text.secondary" >
                                     {weight/10} Kg
                                 </Typography>
+                            </Grid>
+                            <Grid item>
                                 <Typography 
                                     sx={{fontFamily: 'Monospace' }} 
                                     variant="h6">
                                     Altura: 
                                 </Typography>
                                 <Typography 
-                                    sx={{ fontSize: 15, fontFamily: 'Monospace', textTransform: 'capitalize' }} 
+                                    sx={{ fontSize: 15, fontFamily: 'Monospace', textTransform: 'capitalize', marginRight: 10 }} 
                                     color="text.secondary">
                                     {height/10} mt
                                 </Typography>
-                            </div>
-                        </div>
-                        <Typography 
-                            id="modal-modal-title" 
-                            variant="h6" 
-                            fontFamily="Monospace" >
-                                Habilidades:
-                        </Typography>
-                        <Typography 
-                            component={'span'} 
-                            variant="body2" 
-                            color="text.secondary">
-                            {abilities.map((ability,index) =>{
-                                return (
-                                    <Chip 
-                                        key={index} 
-                                        style={{marginRight: 5, marginTop: 5}} 
-                                        label={ability.ability.name} 
-                                        size="small" 
-                                        color="success" 
-                                        variant="outlined"
-                                        />
-                                    )
-                                })
-                            }
-                        </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Typography 
+                                id="modal-modal-title" 
+                                variant="h6" 
+                                fontFamily="Monospace" >
+                                    Habilidades:
+                                </Typography>
+                                <Typography 
+                                    component={'span'} 
+                                    variant="body2" 
+                                    color="text.secondary">
+                                    {abilities.map((ability,index) =>{
+                                        return (
+                                            <Chip 
+                                                key={index} 
+                                                style={{marginRight: 5, marginTop: 5}} 
+                                                label={ability.ability.name} 
+                                                size="small" 
+                                                color="success" 
+                                                variant="outlined"
+                                                />
+                                            )
+                                        })
+                                    }
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                        
+                        
+                        
+                        
                     </Box>
                 </Fade>
             </Modal>
