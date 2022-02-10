@@ -70,9 +70,9 @@ const PokeModal = ({open, close, abilities, urlSprite, weight, height}) => {
                             </Grid>
                             <Grid item >
                                 <Typography 
-                                id="modal-modal-title" 
-                                variant="h6" 
-                                fontFamily="Monospace" >
+                                    id="modal-modal-title" 
+                                    variant="h6" 
+                                    fontFamily="Monospace" >
                                     Habilidades:
                                 </Typography>
                                 <Typography 
@@ -83,7 +83,7 @@ const PokeModal = ({open, close, abilities, urlSprite, weight, height}) => {
                                         return (
                                             <Chip 
                                                 key={index} 
-                                                style={{marginRight: 5, marginTop: 5}} 
+                                                style={{ marginTop: 5}} 
                                                 label={ability.ability.name} 
                                                 size="small" 
                                                 color="success" 
