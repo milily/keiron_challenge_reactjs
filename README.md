@@ -1,4 +1,4 @@
-# New Poke App (Keiron Challenge with ReactJs)
+# New Pokemon App (Keiron Challenge with ReactJs)
 
 url site: [https://newpokeapp.netlify.app/](https://pokemonappchallenge.netlify.app/)
 
